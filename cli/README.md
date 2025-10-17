@@ -154,3 +154,4 @@ gitsum diff
 ## License
 
 ISC
+# GitSum CLI Tool
