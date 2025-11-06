@@ -1,6 +1,6 @@
 {
   "name": "gitsum-cli",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "A terminal interface for checking git diff of repositories",
   "main": "dist/cli.js",
   "bin": {
