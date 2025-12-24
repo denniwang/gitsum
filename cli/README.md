@@ -7,8 +7,10 @@ A powerful terminal interface for checking git diff of repositories. GitSum prov
 - 🎨 **Colored Output**: Beautiful colored diff output for better readability
 - 📊 **Multiple Diff Types**: Check staged, unstaged, or all changes
 - 🔍 **Branch Comparison**: Compare with any branch or commit
+- 🔀 **Visual Branch Diff**: Dedicated command to visualize differences between two branches
 - 📁 **File Filtering**: Show diff for specific files
 - 📈 **Status Summary**: Get overview of repository changes
+- 📊 **Commit Statistics**: See how many commits ahead/behind branches are
 - ⚡ **Fast & Lightweight**: Quick execution with minimal dependencies
 
 ## Installation
@@ -54,6 +56,15 @@ gitsum diff --commit HEAD~1
 # Show diff for a specific file
 gitsum diff --file src/index.ts
 
+# Compare two branches (visualize differences)
+gitsum compare --base main --compare feature-branch
+
+# Compare current branch with another branch
+gitsum compare --compare main
+
+# Show only summary without full diff
+gitsum compare --base main --compare feature-branch --summary
+
 # Show repository status
 gitsum status
 
@@ -97,6 +108,23 @@ Shows repository status and information including:
 - Last commit
 - Number of modified files
 
+#### `gitsum compare`
+Compare two branches and visualize the differences with detailed statistics.
+
+- `-b, --base <branch>`: Base branch to compare from (default: current branch)
+- `-c, --compare <branch>`: Branch to compare against (default: current branch)
+- `-s, --summary`: Show only summary without full diff
+- `-C, --context <lines>`: Number of context lines in diff (default: 3)
+- `--no-color`: Disable colored output
+- `-f, --file <file>`: Show diff for specific file only
+
+The compare command shows:
+- Branch information (commit, author, date, message)
+- Commit statistics (ahead/behind counts)
+- File changes (added, modified, deleted, renamed)
+- Diff statistics (lines changed)
+- Full diff output (unless `--summary` is used)
+
 #### `gitsum info`
 Same as `status` command - shows repository information.
 
@@ -115,6 +143,15 @@ gitsum diff --all
 ### Compare current branch with main
 ```bash
 gitsum diff --branch main
+```
+
+### Visualize differences between two branches
+```bash
+# Compare feature-branch with main
+gitsum compare --base main --compare feature-branch
+
+# Compare current branch with main (summary only)
+gitsum compare --compare main --summary
 ```
 
 ### See changes in a specific file
